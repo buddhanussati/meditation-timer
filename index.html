@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/x-icon" href="./images/favicon4.ico">
+<link rel="apple-touch-icon" href="./images/icon-192-upo.png">
+<link href="./css/anapana.css" rel="stylesheet">
+
+<title>Ānāpānasati</title>
+</head>
+<body>
+
+<div id="circle"></div>
+
+<div id="text-container">
+  <div id="stage-indicator">Preparation</div>
+  <div id="main-text">Keep back straight • Establish mindfulness to the fore</div>
+</div>
+
+<div id="controls">
+  <button class="btn btn-small" onclick="changeStage(-1)" title="Previous Stage"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11 19l-7-7 7-7v14zM18 19l-7-7 7-7v14z"/>
+</svg></button>
+  
+  <button class="btn" id="speedBtn" title="Breath Length"><svg width="15" height="15" viewBox="0 0 40 40" fill="none">
+    <circle cx="20" cy="20" r="18" stroke="white" stroke-width="2" fill="none"/>
+    <circle cx="20" cy="20" r="9" stroke="white" stroke-width="2" fill="none"/>
+  </svg></button>
+  <button class="btn" id="toggleBtn" title="Start/Stop" style="font-size: 24px; color: #8ac"><svg width="20" height="20" viewBox="0 0 40 40" fill="none">
+      <polygon points="14,10 30,20 14,30" fill="white"/>
+    </svg></button>
+  <button class="btn" id="bellBtn" title="Bell"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+    </svg></button>
+  
+  <button class="btn btn-small" onclick="changeStage(1)" title="Next Stage"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M13 5l7 7-7 7V5zM6 5l7 7-7 7V5z"/>
+</svg></button>
+  
+  <div style="width:1px; height:20px; background:rgba(255,255,255,0.2); margin:0 5px;"></div>
+<button id="timer" class="btn btn-small" title="Set Bell Interval">--:--</button>
+</div>
+
+<div id="overlay" onclick="closeAllPopups()"></div>
+
+<div id="bellPopup" class="popup">
+  <h3>Bell Interval</h3>
+  <div class="grid-options">
+    <button data-min="1" onclick="saveInterval(1)">1 min</button>
+    <button data-min="2" onclick="saveInterval(2)">2 mins</button>
+    <button data-min="5" onclick="saveInterval(5)">5 mins</button>
+    <button data-min="10" onclick="saveInterval(10)">10 mins</button>
+    <button data-min="15" onclick="saveInterval(15)">15 mins</button>
+  <button data-min="20" onclick="saveInterval(20)">20 mins</button>
+  </div>
+  <div style="display:flex;justify-content:center;gap:5px;">
+    <input type="number" id="customMin" placeholder="Minutes">
+    <button onclick="saveCustomBell()">OK</button>
+  </div>
+  <button class="closeBtn" onclick="closeAllPopups()">Close</button>
+</div>
+
+<div id="speedPopup" class="popup">
+  <h3>Breath Length</h3>
+  <div class="grid-options">
+    <button data-speed="5" onclick="saveSpeed(5)">5 sec</button>
+    <button data-speed="8" onclick="saveSpeed(8)">8 sec</button>
+    <button data-speed="10" onclick="saveSpeed(10)">10 sec</button>
+    <button data-speed="12" onclick="saveSpeed(12)">12 sec</button>
+    <button data-speed="14" onclick="saveSpeed(14)">14 sec</button>
+    <button data-speed="16" onclick="saveSpeed(16)">16 sec</button>
+  </div>
+  <div style="display:flex;justify-content:center;gap:5px;">
+    <input type="number" id="customSpeed" placeholder="Seconds">
+    <button onclick="saveCustomSpeed()">OK</button>
+  </div>
+  <button class="closeBtn" onclick="closeAllPopups()">Close</button>
+</div>
+<div id="bellSoundPopup" class="popup">
+  <div style="margin:0; margin-bottom:4px; font-size:14px; font-weight:bold; color:#8ac; text-align:center; text-transform:uppercase; letter-spacing:1px;">
+    Bell Sound
+  </div>
+  <div class="grid-options">
+    <button data-sound="bell-1" onclick="setBellSound('bell-1')">Bell 1</button>
+    <button data-sound="bell-2" onclick="setBellSound('bell-2')">Bell 2</button>
+    <button data-sound="bell-3" onclick="setBellSound('bell-3')">Bell 3</button>
+    <button data-sound="bell-4" onclick="setBellSound('bell-4')">Bell 4</button>
+    <button data-sound="bell-5" onclick="setBellSound('bell-5')">Beep</button>
+    <button data-sound="bell-6" onclick="setBellSound('bell-6')">Water Flow</button>
+  </div>
+  <button class="closeBtn" onclick="closeAllPopups()">Close</button>
+</div>
+
+<audio id="bell" src="./audio/bell.mp3"></audio>
+<script src="./js/anapana.js"></script>
+
+</body>
+</html>
